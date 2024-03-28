@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Genera card</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div id="container" class="flex flex-wrap md:w-1/2 m-10">
+        <!-- Inizio card esempio -->
+        <!-- <div class="w-full md:w-1/2 xl:w-1/3 px-4">
+            <div class="bg-white rounded-lg overflow-hidden mb-10 shadow-xl">
+                <img src="https://img.freepik.com/free-vector/night-ocean-landscape-full-moon-stars-shine_107791-7397.jpg?w=2000"
+                    alt="image" class="w-full" />
+                <div class="p-8 sm:p-9 md:p-7 xl:p-9 text-center">
+                    <h3 class="font-semibold text-dark text-xl">Titolo di prova</h3>
+                    <p class="text-base text-body-color leading-relaxed mb-7">
+                        Lorem ipsum dolor sit amet pretium consectetur adipiscing elit.
+                        Lorem consectetur adipiscing elit.
+                    </p>
+                </div>
+            </div>
+        </div> -->
+        <!-- Fine card esempio -->
+    </div>
+
+    <script>
+        const arrCard = [
+            {
+                url: "https://images.unsplash.com/photo-1711377785726-47c7dd8773ff?q=80&w=1886&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                titolo: "macchina",
+                descrizione: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore soluta in mollitia perferendis enim maxime, iste officiis beatae magnam esse!"
+            },
+            {
+                url: "https://images.unsplash.com/photo-1711555803385-584e8fcdccf8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0fHx8ZW58MHx8fHx8",
+                titolo: "ragazza",
+                descrizione: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore soluta in mollitia perferendis enim maxime, iste officiis beatae magnam esse!"
+
+            },
+            {
+                url: "https://images.unsplash.com/photo-1711374630104-dca6e0149245?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHx8",
+                titolo: "neve",
+                descrizione: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore soluta in mollitia perferendis enim maxime, iste officiis beatae magnam esse!"
+            },
+        ];
+
+        arrCard.forEach(element => {
+            generaCard(element);
+            
+        });
+
+        function generaCard(keyValue){
+            const card = document.createElement("div");
+            card.className = "w-full md:w-1/2 xl:w-1/3 px-4";
+
+            const innerDiv = document.createElement("div");
+            innerDiv.className = "bg-white rounded-lg overflow-hidden mb-10 shadow-xl";
+
+            card.appendChild(innerDiv);
+
+            const img = document.createElement("img");
+            img.src = keyValue.url;
+            img.className = "w-full"
+            innerDiv.appendChild(img);
+
+            const divText = document.createElement('div');
+            divText.className = "p-8 sm:p-9 md:p-7 xl:p-9 text-center";
+            innerDiv.appendChild(divText);
+
+            const title = document.createElement('h3');
+            title.className = "font-semibold text-dark text-xl"
+            title.appendChild(document.createTextNode(keyValue.titolo))
+            divText.appendChild(title)
+
+            const descrizione = document.createElement('p');
+            descrizione.className = "text-base text-body-color leading-relaxed mb-7"
+            descrizione.appendChild(document.createTextNode(keyValue.descrizione))
+            divText.appendChild(descrizione)
+
+
+            document.querySelector("#container").appendChild(card)
+
+        }
+    </script>
+</body>
+
+
+</html>
